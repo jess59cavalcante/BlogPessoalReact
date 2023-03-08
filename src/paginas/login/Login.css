@@ -1,0 +1,28 @@
+.text-decorator-none{
+    text-decoration: none;
+}
+.caixatexto{
+    color:#C8B728 !important;
+    width: 5%; /* ajuste o valor de acordo com o tamanho desejado */
+  margin: 0 auto; /* centraliza a caixa de texto horizontalmente */
+}
+.ab {
+    background-color: #C8B728;
+} 
+.ab:hover {
+    background-color: #6d6b14; /* cor de fundo quando o mouse passa */
+}
+
+.ab:focus {
+    background-color: #e0e0e0; /* cor de fundo quando o campo está selecionado */
+}
+
+.caixaformulario{
+
+color: #C8B728;
+border-radius: 0;
+
+}
+.texto1{
+    color: #e0e0e0 !important;
+}
