@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Paper } from "@material-ui/core";
 import "./Home.css";
-
+import TabPostagem from "../../components/postagens/tabpostagem/TabPostagem";
 function Home() {
   return (
     <>
@@ -21,6 +21,7 @@ function Home() {
         Aqui você irá tirar todas as dúvidas dos bastidores, venha comigo nessa experiência incrível e desafiadora!
       </h3>  
           <h4 className="home-text">Se você está lendo isso agora, é porque está buscando informações sobre como funciona um bootcamp, e talvez esteja sentindo uma grande ansiedade. Mas fique tranquilo, pois eu entendo perfeitamente como você se sente! Meu objetivo é ajudá-lo a se sentir mais seguro e confiante, fornecendo todas as informações necessárias para que você comece seu bootcamp com tranquilidade e a certeza de que tudo dará certo.</h4>
+        <TabPostagem/>
         </Grid>
       </Grid>
     </>
