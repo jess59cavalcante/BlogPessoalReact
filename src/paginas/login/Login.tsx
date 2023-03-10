@@ -28,7 +28,7 @@ function Login() {
   }
   useEffect(() => {
     if(token !== '') {
-      navigate('/home')
+      navigate('/postagem')
     }
   }, [token])
   

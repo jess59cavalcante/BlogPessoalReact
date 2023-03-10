@@ -11,3 +11,7 @@ setDados(resposta.data.token)
 export const cadastro = async(url: string, dados: Object, setDados: Function) => {
 const resposta = await api.post(url, dados)
 setDados(resposta.data)}
+
+export const busca = async(url: any, setDados: any, header:any) => {
+    const resposta = await api.post(url, header)
+    setDados(resposta.data)}
