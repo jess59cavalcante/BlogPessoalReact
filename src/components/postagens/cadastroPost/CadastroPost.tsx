@@ -1,13 +1,13 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
 import './CadastroPost.css';
-import {useNavigate, useParams } from 'react-router-dom'
-import Tema from '../../../paginas/models/Tema';
-import { busca, buscaId, post, put } from '../../../paginas/services/Services';
-import Postagem from '../../../paginas/models/Postagem';
-import { TokenState } from '../../../store/token/TokensReducer';
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-
+import { toast } from 'react-toastify';
+import Tema from '../../../paginas/models/Tema';
+import { TokenState } from '../../../store/token/TokensReducer';
+import Postagem from '../../../paginas/models/Postagem';
+import { busca, buscaId, post, put } from '../../../paginas/services/Services';
 
 function CadastroPost() {
     let navigate = useNavigate();
@@ -19,12 +19,20 @@ function CadastroPost() {
 
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado")
+            toast.error('Você precisa estar logado', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
             navigate("/login")
 
         }
     }, [token])
-
     const [tema, setTema] = useState<Tema>(
         {
             id: 0,
@@ -37,7 +45,7 @@ function CadastroPost() {
         tema: null
     })
 
-    useEffect(() => { 
+    useEffect(() => {
         setPostagem({
             ...postagem,
             tema: tema

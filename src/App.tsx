@@ -14,11 +14,13 @@ import store from './store/Store';
 import Cadastro from './paginas/cadastro/Cadastro';
 import CadastroPost from './components/postagens/cadastroPost/CadastroPost';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     
     <Provider store={store}>
+      <ToastContainer />
     <Router>
       <Navbar />
     

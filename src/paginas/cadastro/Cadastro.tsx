@@ -2,12 +2,13 @@ import React, { ChangeEvent, useEffect, useState} from 'react';
 import { Grid, Typography, Button, TextField } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import User from '../models/User';
+import './CadastroUsuario.css';
+import { toast } from 'react-toastify';
 import { cadastroUsuario } from '../services/Services';
-
-
+import User from '../models/User';
 
 function Cadastro() {
+
     let navigate = useNavigate();
     const [confirmarSenha,setConfirmarSenha] = useState<String>("")
     const [user, setUser] = useState<User>(
@@ -15,8 +16,9 @@ function Cadastro() {
             id: 0,
             nome: '',
             usuario: '',
-            foto: '',
-            senha: ''
+            senha: '',
+            foto:''
+
         })
 
     const [userResult, setUserResult] = useState<User>(
@@ -24,8 +26,9 @@ function Cadastro() {
             id: 0,
             nome: '',
             usuario: '',
-            foto: '',
-            senha: ''
+            senha: '',
+            foto:''
+        
         })
 
     useEffect(() => {
@@ -48,14 +51,31 @@ function Cadastro() {
         })
 
     }
-
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         if(confirmarSenha == user.senha){
-        await cadastroUsuario('/usuarios/cadastrar', user, setUserResult)
-        alert('Usuario cadastrado com sucesso')
+        cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+        toast.success('Usuario cadastrado com sucesso', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+            });
         }else{
-            alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+            toast.error('Dados inconsistentes. Favor verificar as informações de cadastro.', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+                });
         }
     }
             return (

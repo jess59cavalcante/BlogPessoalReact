@@ -1,24 +1,37 @@
-import React, { useEffect } from "react";
-import { Grid} from "@material-ui/core";
-import "./Home.css";
-import TabPostagem from "../../components/postagens/tabpostagem/TabPostagem";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { TokenState } from "../../store/token/TokensReducer";
+import React, { useEffect } from 'react';
+import { Typography, Grid, Button } from '@material-ui/core';
+import './Home.css';
+import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Box } from '@mui/material';
+import { toast } from 'react-toastify';
+import { TokenState } from '../../store/token/TokensReducer';
+import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
+
 function Home() {
 
-  let navigate = useNavigate();
-  const token = useSelector<TokenState, TokenState["tokens"]>(
-    (state) => state.tokens
-);
-  
-  useEffect(() => {
-  if (token == "") {
-      alert("Você precisa estar logado")
-      navigate("/login")
+    let navigate = useNavigate();
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
 
-  }
-}, [token])
+    useEffect(() => {
+        if (token == "") {
+            toast.error('Você precisa estar logado', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
+            navigate("/login")
+
+        }
+    }, [token])
   return (
     <>
       <h1 style={{ color: "yellow", textAlign: "center" }}>

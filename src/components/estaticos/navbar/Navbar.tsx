@@ -8,21 +8,29 @@ import { TokenState } from '../../../store/token/TokensReducer';
 import { useDispatch } from "react-redux";
 import { addToken } from '../../../store/token/Actions';
 import {Box} from '@mui/material';
+import {toast} from 'react-toastify';
 
 function Navbar() {
-    
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
     let navigate = useNavigate();
     const dispatch = useDispatch();
-    
-    function goLogout(){
+
+    function goLogout() {
         dispatch(addToken(''));
-        alert("Usuário deslogado")
+        toast.info('Usuário deslogado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "colored",
+            progress: undefined,
+        });
         navigate('/login')
     }
-
     var navbarComponent;
 
     if(token != ""){
