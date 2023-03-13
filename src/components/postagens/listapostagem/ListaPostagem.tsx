@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Postagem from '../../../paginas/models/Postagem';
 import { busca } from '../../../paginas/services/Services';
 import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import {Box} from '@mui/material';
-import useLocalStorage from 'react-use-localstorage';
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/token/TokensReducer';
 
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
-  const [token] = useLocalStorage('token');
+  
   let navigate = useNavigate();
-
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   useEffect(() => {
     if (token == "") {
       alert("Você precisa estar logado")
@@ -22,7 +25,7 @@ function ListaPostagem() {
   }, [token])
 
   async function getPost() {
-    await busca("/postagem", setPosts, {
+    await busca("/postagens", setPosts, {
       headers: {
         'Authorization': token
       }

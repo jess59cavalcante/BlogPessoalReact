@@ -4,6 +4,7 @@ import {Box} from '@mui/material';
 import { TabContext, TabPanel } from '@material-ui/lab';
 import ListaPostagem from '../listapostagem/ListaPostagem';
 import './TabPostagem.css';
+import { Link } from 'react-router-dom';
 
 
 function TabPostagem() {
@@ -15,12 +16,17 @@ function TabPostagem() {
     <>
       <TabContext value={value}>
         <AppBar position="static">
+          
           <Tabs centered className='barra' onChange={handleChange}>
-            <Tab style={{ color: 'black' }} label=" Minhas Experiências " value="1"/>
+            
+          
+            <Tab  style={{ color: 'black' }} label=" Minhas Experiências " value="1"  />    
+                
+            
             <Tab style={{ color: 'black' }} label="Conte a Sua História" value="2" />
-          </Tabs>
-        </AppBar>
-        
+            </Tabs>
+          
+        </AppBar>        
       </TabContext>
     </>
   );

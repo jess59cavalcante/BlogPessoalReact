@@ -29,7 +29,6 @@ iframe {
     color:#fff;
     font-weight: normal; /* remove o negrito */
   line-height: 2.75; /* aumenta o espaçamento entre as linhas */
-  padding: 0;
-  margin: 0;
-  }
-  
+padding: 0;
+margin: 0;
+}
